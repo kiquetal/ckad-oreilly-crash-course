@@ -9,6 +9,20 @@ kubectl run hazelcast --image=hazelcast/hazelcast --restart=Never --port=5701 --
 ### Glossary
 
 - Pod: The Kubernetes primitive that allows for running an application or process inside of one or many containers
+[pod has 1 or more containers]
 
 - Namespace: Primitive for grouping objects, like Pods, by responsability. Every object runs in a namespace.
 
+### Deleting a pod
+
+```
+kubectl delete -f pod.yaml
+
+kubectl delte -f pod.yaml --now
+
+kubectl delete pod hazelcast
+
+```
+
+
+	
