@@ -23,6 +23,12 @@ kubectl delte -f pod.yaml --now
 kubectl delete pod hazelcast
 
 ```
+#### Working in a context
+
+kubectl config set-context <context-of-question> --namespace <namespace of context>
+
+kubectl config use-context <context-of-question>
+
 
 
 	
