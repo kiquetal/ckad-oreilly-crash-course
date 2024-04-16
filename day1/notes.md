@@ -40,5 +40,15 @@ docker save -o node-js-hello-world-1.0.0.tar
 
 ```
 
+### Exercise 2
 
+```
+kubectl create namespace ckad-prep 
+
+kubectl run  mypod --image=nginx:1.15.12 -n ckad-prep 
+
+kubectl run  busybox --rm -it  --image=busybox -n ckad-prep 
+
+
+```
 	
