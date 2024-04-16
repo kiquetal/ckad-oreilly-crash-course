@@ -28,5 +28,26 @@ spec:
 ```
 
 
+### Exercise 5
 
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  namespace: h92
+spec:
+  volumes:
+  - name: nginx-run
+    emptyDir: {}
+  - name: nginx-cache
+    emptyDir: {}
+  - name: nginx-data
+    emptyDir: {}
+  containers:
+  - name: nginx
+    image: nginx:1.26.0
+    
+```
+	
   
