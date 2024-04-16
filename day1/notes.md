@@ -90,3 +90,5 @@ spec:
 
 kubectl create cronjob current-date --schedule="* * * * *" --image=nginx:1.24.0 -- /bin/sh -c 'echo "Current date: ${date}"'
 
+
+
