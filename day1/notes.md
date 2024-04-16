@@ -45,10 +45,18 @@ docker save -o node-js-hello-world-1.0.0.tar
 ```
 kubectl create namespace ckad-prep 
 
-kubectl run  mypod --image=nginx:1.15.12 -n ckad-prep 
+kubectl run  mypod --image=nginx:1.15.12 -n ckad-prep --port=80 
 
 kubectl run  busybox --rm -it  --image=busybox -n ckad-prep 
 
 
-```
-	
+``
+
+### Job vs CronJob
+
+Job: Runs functionality until a specified number of completions has been reached, making it a good fit for one-time operations. Import/export data processes 
+
+
+CronJob: Essentially a Job, but it's run periodically based on a schedule. Running a database backup.
+
+
