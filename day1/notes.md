@@ -79,9 +79,14 @@ spec:
       containers:
       - name: random-hash
         image: bash
-        command: ["/bin/bash", "-c", "echo $RANDOM | base64 | head -c 20"]
+        command: ["/bin/sh", "-c", "echo $RANDOM | base64 | head -c 20"]
       restartPolicy: Never
 
-
-
 ```
+
+### CronJob 
+
+- Imperative
+
+kubectl create cronjob current-date --schedule="* * * * *" --image=nginx:1.24.0 -- /bin/sh -c 'echo "Current date: ${date}"'
+
