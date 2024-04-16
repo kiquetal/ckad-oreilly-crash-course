@@ -59,4 +59,6 @@ Job: Runs functionality until a specified number of completions has been reached
 
 CronJob: Essentially a Job, but it's run periodically based on a schedule. Running a database backup.
 
-
+```
+kubectl create job counter --image=nginx:1.24.0 -- /bin/sh -c 'counter=0; while [ $counter -lt 3 ]; do counter=$((counter+1)); echo "$counter"; sleep 3; done;'
+```
