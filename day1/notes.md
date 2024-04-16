@@ -61,4 +61,27 @@ CronJob: Essentially a Job, but it's run periodically based on a schedule. Runni
 
 ```
 kubectl create job counter --image=nginx:1.24.0 -- /bin/sh -c 'counter=0; while [ $counter -lt 3 ]; do counter=$((counter+1)); echo "$counter"; sleep 3; done;'
+
+```
+
+```
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: random-hash
+spec:
+  completions: 5
+  parallelism: 2
+  template:
+    metadata:
+      name: random-hash
+    spec:
+      containers:
+      - name: random-hash
+        image: bash
+        command: ["/bin/bash", "-c", "echo $RANDOM | base64 | head -c 20"]
+      restartPolicy: Never
+
+
+
 ```
