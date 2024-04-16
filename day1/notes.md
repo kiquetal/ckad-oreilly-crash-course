@@ -30,5 +30,14 @@ kubectl config set-context <context-of-question> --namespace <namespace of conte
 kubectl config use-context <context-of-question>
 
 
+### Exercise 1
 
+```
+docker build -t nodejs-hello-world:1.0.0 . 
+
+docker save -o node-js-hello-world-1.0.0.tar 
+
+
+
+```
 	
