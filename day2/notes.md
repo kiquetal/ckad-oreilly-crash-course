@@ -136,4 +136,41 @@ spec:
 
 ### Hybrid approach
 
-kubectl run business-app --image=bmuschko/nodejs:1.0.0 --port=8080 -o yaml --dry-run=client --restart=Never > business-pod.yaml  
+kubectl run business-app --image=bmuschko/nodejs:1.0.0 --port=8080 -o yaml --dry-run=client --restart=Never > business-pod.yaml
+
+
+
+### Example multi-container pod
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: business-app
+  labels:
+    run: business-app
+spec:
+  volumes:
+  - name: configurer
+    emptyDir: {}
+  initContainers:
+  - name: configured
+    image: busybox
+    volumeMounts:
+    - name: configdir
+      mountPath: "/usr/shared/app"
+    command:
+    - wget
+    - "-O"
+    - "/usr/shared/app/config.json"
+    - http://raw.githubcontent.com/bmushcko/ckad-crash-coursse
+  containers:
+  - image: bmushcko/nodejs:1.0.0
+    name: web
+    ports:
+    - containerPort: 8080
+    volumeMounts:
+    - name: configdir
+      mountPath: "/usr/shared/app"
+
+  
