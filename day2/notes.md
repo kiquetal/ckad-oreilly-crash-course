@@ -105,4 +105,31 @@ spec:
     path: /data/config
 
 ``` 
+
+### Design Patterns
+
+- Init Container
+
+	Provides initilization logic concerns to be run before the main application event starts
+        Example: Downloading a configuration files requiered by application.
+
+
+- Adapter
+
+	Transforms the output produced by  the application to make it consumable in the format
+        needed by another part of the system.
+	Example: Massagign log data
+
+- Sidecar
+
+	The sidecars are not part of the main traffic
+	or API of the primary application and operate asynchronously 
+	Example: Watcher capabilities
+
+
+- Ambassador
+
+	Provides a proxy for communicating with external services
+	to hide and/or abstract the complexity.
+	Example: Rate-limiting functionality for Http(s) calls to an external service.
   
