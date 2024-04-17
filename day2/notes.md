@@ -184,9 +184,23 @@ spec:
 Controls a predefined number of Pods with the same configuration, so called replicas
 The number of replicas can be scale up or down
 
+
+kubectl create deployment my-deploy --image=image.1.1. --replicas=3
+
+
+
 ### Deployment Strategies
 
 Rollout? 
+
+kubectl annotate deployment my-deploy kubernetes.io/change-casue="image updated to 1.16.1"
+
+kubectl rollout history deployment my-deploy
+
+kubectl scale deployment my-deploy --replica=5
+
+
+
 
 
 ### Helm
@@ -195,3 +209,43 @@ helm upgrade
 helm repo add
 helm repo update
 helm install <release> <url/project>
+
+
+### Horizontal Pod Autoscaler
+
+```
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: app-cache
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: app-cache
+  minReplicas: 3
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utiliziation
+        averageUtilization: 80
+
+```
+
+### Common deploymenmt Strategies:
+
+- Rolling: Release a new version in a rolling update fashion, one after the other.
+
+
+- Recreate: Terminate the old version and release new one.
+
+
+- Blue/green: Release a new version alongside the old version then switch traffic
+
+
+- Canary: Release a new version to a subset of users, then procceed to a full rollout.
+
+
