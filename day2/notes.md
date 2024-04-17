@@ -47,7 +47,16 @@ spec:
   containers:
   - name: nginx
     image: nginx:1.26.0
-    
+    securityContext:
+      readOnlyRootFilesystem: true 
+    volumeMounts:
+    - name: nginx-run
+      mountPath: /var/run
+    - name: nginx-cache
+      mountPath: /var/cache/nginx
+    - name: nginx-data
+      mountPath: /usr/local/nginx
 ```
 	
+
   
