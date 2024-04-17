@@ -87,4 +87,22 @@ spec:
    storage: 256Mi
  storageClasName: "" [your class]	
 
+```
+
+### PV
+
+```
+apiKind: v1
+kind: PersistentVolume
+metadata:
+  name: pv
+spec:
+  capactity:
+    storage: 512Mi
+  accessMode:
+   - ReadWriteMany
+  hostPath:
+    path: /data/config
+
+``` 
   
