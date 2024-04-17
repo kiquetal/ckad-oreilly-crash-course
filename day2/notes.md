@@ -132,4 +132,8 @@ spec:
 	Provides a proxy for communicating with external services
 	to hide and/or abstract the complexity.
 	Example: Rate-limiting functionality for Http(s) calls to an external service.
-  
+
+
+### Hybrid approach
+
+kubectl run business-app --image=bmuschko/nodejs:1.0.0 --port=8080 -o yaml --dry-run=client --restart=Never > business-pod.yaml  
