@@ -172,5 +172,26 @@ spec:
     volumeMounts:
     - name: configdir
       mountPath: "/usr/shared/app"
+```
 
-  
+### To implement
+
+- Ambassador Pattern.
+
+
+### Deployments
+
+Controls a predefined number of Pods with the same configuration, so called replicas
+The number of replicas can be scale up or down
+
+### Deployment Strategies
+
+Rollout? 
+
+
+### Helm
+
+helm upgrade
+helm repo add
+helm repo update
+helm install <release> <url/project>
