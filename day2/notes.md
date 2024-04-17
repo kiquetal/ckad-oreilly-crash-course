@@ -57,6 +57,34 @@ spec:
     - name: nginx-data
       mountPath: /usr/local/nginx
 ```
-	
+### PV Access Mode
+
+- ReadWriteOnce
+- ReadOnlyMany
+- ReadWriteMany
+
+
+
+### Reclaim Policy
+
+- Retain
+- Delete
+- Recycle:[deprecated]
+
+
+### PVC
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ name: db-pvc
+spec:
+ accessMode:
+ - ReadWriteOnce
+ resources:
+  requests:
+   storage: 256Mi
+ storageClasName: "" [your class]	
 
   
