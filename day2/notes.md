@@ -248,4 +248,56 @@ spec:
 
 - Canary: Release a new version to a subset of users, then procceed to a full rollout.
 
+Rolling Update
+
+```
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnvailable: 0
+
+```
+
+Recreate
+
+```
+spec:
+  replica: 3
+  strategy:
+    type: Recreate
+```
+
+Blue/green
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+spec:
+  template:
+    metadata:
+      labels:
+        app: my-deploy
+        version: 1.0.0
+```
+
+Green deployment
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green
+spec:
+  template:
+    metadata:
+      labels:
+        app: my-deploy
+        version: 1.1.0
+```
+
+Canary: Two deployment objects with different traffic distribution
 
