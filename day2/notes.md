@@ -301,3 +301,35 @@ spec:
 
 Canary: Two deployment objects with different traffic distribution
 
+--
+
+#### Exercise 17
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello
+  labels:
+    app: hellow
+spec:
+  containers:
+  - name: nodejs
+    image: bmuschko/nodejs-hello-world:1.0.0
+    ports:
+    - containerPort: 3000
+      name: nodejs-port
+    livenessProbe:
+      httpGet:
+        path: /
+	port: nodejs-port
+      initialDelaySeconds: 5
+      periodSeconds: 8
+    readinessProbe:
+      httpGet:
+        path: /
+	port: nodejs-port
+      initialDelaySeconds: 2
+	
+
+````
